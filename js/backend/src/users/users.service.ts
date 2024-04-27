@@ -46,9 +46,9 @@ export class UsersService {
     const user = await this.userRepository.findOne({
       where: {
         idUser,
-        firstName,
-        lastName,
-        secondName,
+        // firstName,
+        // lastName,
+        // secondName,
       },
     });
 
@@ -60,9 +60,9 @@ export class UsersService {
           idUser: idUser,
         },
       });
-      user.firstName = firstName;
-      user.lastName = lastName;
-      user.secondName = secondName;
+      // user.firstName = firstName;
+      // user.lastName = lastName;
+      // user.secondName = secondName;
       await user.save();
       return user;
     }

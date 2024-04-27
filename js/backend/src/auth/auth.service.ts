@@ -32,7 +32,6 @@ export class AuthService {
       token: this.jwtService.sign({
         email: params.email,
         id: params.id,
-        userName: params.userName,
       }),
     };
   }
@@ -47,11 +46,11 @@ export class AuthService {
     }
 
     const userCreate: CreateUserDto = {
-      firstName: userDto.firstName,
-      lastName: userDto.lastName,
-      secondName: userDto?.secondName,
+      // firstName: userDto.firstName,
+      // lastName: userDto.lastName,
+      // secondName: userDto?.secondName,
       email: userDto.email,
-      userName: userDto.userName,
+      // userName: userDto.userName,
       password: userDto.password,
     };
 
@@ -83,7 +82,7 @@ export class AuthService {
     const payload = {
       email: user.email,
       id: user.idUser,
-      userName: user.userName,
+      // userName: user.userName,
     };
     return {
       token: this.jwtService.sign(payload),
