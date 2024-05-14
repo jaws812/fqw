@@ -41,6 +41,7 @@
 // import { TradeBlankModule } from "./trade-blank/trade-blank.module";
 // import { WishTradeBlankModule } from "./wish-tradeblank/wish-tradeblank.module";
 // // import { WishTradeBlankModule } from "./get-category/wish-tradeblank.module";
+import { RolesModule } from './roles/roles.module';
 
 // @Module({
 //   controllers: [], //TradeBlankController, GetCategoryController

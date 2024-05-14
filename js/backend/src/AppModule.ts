@@ -6,12 +6,13 @@ import { User } from "./users/users.model";
 import { AuthModule } from "./auth/auth.module";
 import { FilesModule } from "./files/files.module";
 import { UserAddressModule } from "./user-address/user-address.module";
-import { UserMsgModule } from "./user-msg/user-msg.module";
 import * as path from "path";
 import { UserAddress } from "./user-address/user-address.model";
-import { UserMsg } from "./user-msg/user-msg.model";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import "dotenv/config";
+import { Role } from "./roles/roles.model";
+import { RolesModule } from "./roles/roles.module";
+import { UserRoles } from "./roles/user-roles.model";
 
 @Module({
   controllers: [],
@@ -30,14 +31,14 @@ import "dotenv/config";
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, UserAddress, UserMsg],
+      models: [User, UserAddress, Role, UserRoles],
       autoLoadModels: true,
     }),
     UsersModule,
     AuthModule,
     FilesModule,
     UserAddressModule,
-    UserMsgModule,
+    RolesModule
   ],
 })
 export class AppModule {}

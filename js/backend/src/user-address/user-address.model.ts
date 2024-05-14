@@ -12,13 +12,10 @@ import { User } from "src/users/users.model";
 
 interface UserAddressCreationAttrs {
   idUser: number;
-  addrIndex: string;
-  addrCity: string;
-  addrSreet: string;
-  addrHouse: string;
-  addrStructure?: string; //может прийти а может и не прийти
-  addrApart?: string;
-  isDefault: boolean;
+  city: string;
+  street: string;
+  house: string;
+  apartment: string;
 }
 
 @Table({ tableName: "users-address" })
@@ -31,28 +28,20 @@ export class UserAddress extends Model<UserAddress, UserAddressCreationAttrs> {
   })
   idUserAddress: number;
 
-  @ForeignKey(() => User)
+  @ForeignKey(() => User)// дописать связь в юзере
   @Column({ type: DataType.INTEGER })
   idUser: number;
 
   @Column({ type: DataType.STRING, allowNull: false })
-  addrIndex: string;
+  city: string;
 
   @Column({ type: DataType.STRING, allowNull: false })
-  addrCity: string;
+  street: string;
 
   @Column({ type: DataType.STRING, allowNull: false })
-  addrSreet: string;
+  house: string;
 
   @Column({ type: DataType.STRING, allowNull: false })
-  addrHouse: string;
+  apartment: string;
 
-  @Column({ type: DataType.STRING, defaultValue: null })
-  addrStructure: string;
-
-  @Column({ type: DataType.STRING, defaultValue: null })
-  addrApart: string;
-
-  @Column({ type: DataType.BOOLEAN, allowNull: false, defaultValue: false })
-  isDefault: boolean;
 }

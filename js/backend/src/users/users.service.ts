@@ -2,21 +2,19 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { User } from "./users.model";
 import { InjectModel } from "@nestjs/sequelize";
 import { CreateUserDto } from "./dto/create-user.dto";
-import { BanUserDto } from "./dto/ban-user.dto";
+import { RolesService } from "src/roles/roles.service";
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User) private userRepository: typeof User) {}
+  constructor(
+    @InjectModel(User) private userRepository: typeof User,
+    private roleService: RolesService
+  ) {}
 
   async createUser(dto: CreateUserDto) {
-    const userDto = {
-      ...dto,
-      rating: 0,
-      isStaff: false,
-      isSuperUser: false,
-      enabled: false,
-    };
-    const user = await this.userRepository.create(userDto);
+    const user = await this.userRepository.create(dto);
+    const role = await this.roleService.getRoleByValue("USER");
+    await user.$set('roles', [role.idRole])
     return user;
   }
 
@@ -33,22 +31,10 @@ export class UsersService {
     return user;
   }
 
-  async ban(dto: BanUserDto) {
-    const user = await this.userRepository.findByPk(dto.userId);
-    if (!user) {
-      throw new HttpException("Пользователь не найден", HttpStatus.NOT_FOUND);
-    }
-    await user.save();
-    return user;
-  }
-
-  async updateUserNames({ idUser, firstName, lastName, secondName }) {
+  async updateUserNames({ idUser}) { //async updateUserNames({ idUser, firstName, lastName, secondName })
     const user = await this.userRepository.findOne({
       where: {
         idUser,
-        // firstName,
-        // lastName,
-        // secondName,
       },
     });
 
@@ -60,9 +46,6 @@ export class UsersService {
           idUser: idUser,
         },
       });
-      // user.firstName = firstName;
-      // user.lastName = lastName;
-      // user.secondName = secondName;
       await user.save();
       return user;
     }
