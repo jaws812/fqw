@@ -78,16 +78,23 @@ export class AuthService {
     return this.generateToken(user);
   }
 
+  // private async generateToken(user: User) {
+  //   const payload = {
+  //     email: user.email,
+  //     id: user.idUser,
+  //     // userName: user.userName,
+  //   };
+  //   return {
+  //     token: this.jwtService.sign(payload),
+  //   };
+  // }
+
   private async generateToken(user: User) {
-    const payload = {
-      email: user.email,
-      id: user.idUser,
-      // userName: user.userName,
-    };
+    const payload = {email: user.email, id: user.id, roles: user.roles}
     return {
-      token: this.jwtService.sign(payload),
-    };
-  }
+        token: this.jwtService.sign(payload)
+    }
+}
 
   private async validateUser(userDto: LoginUserDto) {
     console.log({ userDto });

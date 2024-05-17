@@ -13,6 +13,18 @@ import "dotenv/config";
 import { Role } from "./roles/roles.model";
 import { RolesModule } from "./roles/roles.module";
 import { UserRoles } from "./roles/user-roles.model";
+import { CartModule } from "./cart/cart.module";
+import { Cart } from "./cart/cart.model";
+import { CartProduct } from "./cart-product/cart-product.model";
+import { CartProductModule } from "./cart-product/cart-product.module";
+import { ProductModule } from "./product/product.module";
+import { Product } from "./product/product.model";
+import { ProductChar } from "./product-char/product-char.model";
+import { BrandModule } from "./brand/brand.module";
+import { Brand } from "./brand/brand.model";
+import { TypeModule } from "./type/type.module";
+import { Type } from "./type/type.model";
+import { BrandType } from "./brand/brand-type.model";
 
 @Module({
   controllers: [],
@@ -31,14 +43,19 @@ import { UserRoles } from "./roles/user-roles.model";
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, UserAddress, Role, UserRoles],
+      models: [User, UserAddress, Role, UserRoles, Cart, CartProduct, Product, ProductChar, Brand,Type, BrandType],
       autoLoadModels: true,
     }),
     UsersModule,
     AuthModule,
     FilesModule,
     UserAddressModule,
-    RolesModule
+    RolesModule,
+    CartModule,
+    CartProductModule,
+    BrandModule,
+    ProductModule,
+    TypeModule
   ],
 })
 export class AppModule {}

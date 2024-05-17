@@ -1,10 +1,8 @@
 import {
   BelongsTo,
-  BelongsToMany,
   Column,
   DataType,
   ForeignKey,
-  HasMany,
   Model,
   Table,
 } from "sequelize-typescript";
@@ -43,5 +41,9 @@ export class UserAddress extends Model<UserAddress, UserAddressCreationAttrs> {
 
   @Column({ type: DataType.STRING, allowNull: false })
   apartment: string;
+
+  @BelongsTo(()=> User)
+  user: User;
+
 
 }

@@ -42,6 +42,20 @@
 // import { WishTradeBlankModule } from "./wish-tradeblank/wish-tradeblank.module";
 // // import { WishTradeBlankModule } from "./get-category/wish-tradeblank.module";
 import { RolesModule } from './roles/roles.module';
+import { CartController } from './cart/cart.controller';
+import { CartService } from './cart/cart.service';
+import { CartModule } from './cart/cart.module';
+import { CartProductController } from './cart-product/cart-product.controller';
+import { CartProductModule } from './cart-product/cart-product.module';
+import { ProductService } from './product/product.service';
+import { ProductModule } from './product/product.module';
+import { ProductCharController } from './product-char/product-char.controller';
+import { ProductCharModule } from './product-char/product-char.module';
+import { BrandService } from './brand/brand.service';
+import { BrandModule } from './brand/brand.module';
+import { TypeController } from './type/type.controller';
+import { TypeService } from './type/type.service';
+import { TypeModule } from './type/type.module';
 
 // @Module({
 //   controllers: [], //TradeBlankController, GetCategoryController
