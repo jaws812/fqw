@@ -8,7 +8,7 @@ export class TypeController {
 
   @Post()
   create(@Body() dto: CreateTypeDto) {
-    return this.typeService.createType(dto);
+    return this.typeService.createTypeWithBrand(dto);
   }
 
   @Get()

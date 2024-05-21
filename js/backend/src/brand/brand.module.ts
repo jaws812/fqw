@@ -13,5 +13,6 @@ import { BrandType } from './brand-type.model';
   imports: [
     SequelizeModule.forFeature([ Brand, Product,Type, BrandType]),
   ],
+  exports:[BrandService]
 })
 export class BrandModule {}

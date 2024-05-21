@@ -2,6 +2,7 @@ import {
   BelongsToMany,
   Column,
   DataType,
+  ForeignKey,
   HasMany,
   Model,
   Table,
@@ -11,6 +12,7 @@ import { Brand } from "src/brand/brand.model";
 import { Product } from "src/product/product.model";
 
 interface TypeCreationAttrs {
+  // idBrand: number;
   name:string;
 }
 
@@ -23,6 +25,7 @@ export class Type extends Model<Type, TypeCreationAttrs> {
     primaryKey: true,
   })
   idType: number;
+
 
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   name: string;

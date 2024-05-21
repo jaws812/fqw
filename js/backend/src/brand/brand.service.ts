@@ -21,4 +21,13 @@ export class BrandService {
         });
         return brand;
       }
+
+      async getBrandById(idBrand:number){
+        const brand = await this.brandRepository.findOne({
+          where: { 
+            idBrand
+           },
+        });
+        return brand;
+      }
 }
