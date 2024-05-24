@@ -7,6 +7,12 @@ import DeviceItem from "./DeviceItem";
 const DeviceList = observer(() => {
   const { device } = useContext(Context);
 
+//неработает
+  if (!device.devices) {
+    console.log(device)
+    return "null"; // или можно отобразить загрузочный индикатор
+  }
+
   return (
     <Row className="d-flex">
       {device.devices.map(device=>

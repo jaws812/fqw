@@ -26,14 +26,14 @@ const NavBar = observer(() => {
 
         {user.isAuth ? (
           <Nav className="ms-auto" style={{ color: "white" }}>
-            <Button variant={"outline-light"} onClick={()=>navigate(ADMIN_ROUTE)}>Admin panel </Button>
+            <Button variant={"outline-light"} onClick={()=>navigate(ADMIN_ROUTE)}>Панель администратора </Button>
             <Button
               variant={"outline-light"}
               className="ms-2"
               onClick={() => logOut()}
               
             >
-              Log out{" "}
+              Выйти{" "}
             </Button>
           </Nav>
         ) : (
@@ -42,7 +42,7 @@ const NavBar = observer(() => {
               variant={"outline-light"}
               onClick={() => navigate(LOGIN_ROUTE)}
             >
-              Authorization{" "}
+              Авторизация{" "}
             </Button>
           </Nav>
         )}
