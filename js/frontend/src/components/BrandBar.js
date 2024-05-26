@@ -5,6 +5,7 @@ import { Card, Row } from "react-bootstrap";
 
 const BrandBar = observer(() => {
   const { device } = useContext(Context);
+  console.log("значение device.brands " + device.brands + " ");
   return (
     <Row className={"d-flex"}>
       {device.brands.map((brand) => (

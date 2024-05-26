@@ -1,5 +1,5 @@
 export class CreateProductDto {
-  readonly name: number;
+  readonly name: string;
   readonly describe: string;
   readonly price: number;
   readonly idBrand: number;

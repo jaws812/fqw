@@ -24,13 +24,12 @@ export class Role extends Model<Role, RoleCreationAttrs> {
   })
   idRole: number;
 
-  @Column({ type: DataType.STRING,unique: true, allowNull: false })
+  @Column({ type: DataType.STRING, unique: true, allowNull: false })
   value: string;
 
   @Column({ type: DataType.STRING, allowNull: false })
   description: string;
 
-  @BelongsToMany(()=>User, ()=>UserRoles)
+  @BelongsToMany(() => User, () => UserRoles)
   users: User[];
-
 }

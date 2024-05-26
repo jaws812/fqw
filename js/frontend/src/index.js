@@ -1,12 +1,12 @@
 import React, { createContext } from "react";
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 import App from "./App";
 import UserStore from "./store/UserStore";
 import DeviceStore from "./store/DeviceStore";
 
-export const Context= createContext(null)
+export const Context= createContext(null);
 
-ReactDom.render(
+ReactDOM.render(
 
   <Context.Provider value={{
     user:new UserStore(),

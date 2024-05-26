@@ -12,6 +12,14 @@ const DevicePage = () => {
     { id: 5, title: "Аккумулятор", description: " 1000 maH" },
   ];
 
+  // const [device, setDevice] = useState({ info: [] });
+
+  // const {id} = useParams();
+
+  // useEffect(() => {
+  //   fetchOneProduct(id).then(data=>setDevice(data))
+  // }, []);
+
   return (
     <Container className="mt-3">
       <Row>

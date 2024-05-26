@@ -8,18 +8,18 @@ import { Context } from "..";
 import { fetchBrands, fetchProducts, fetchTypes } from "../http/productAPI";
 
 const Shop = observer(() => {
-const {device}=useContext(Context);
+  const { device } = useContext(Context);
   useEffect(() => {
     fetchTypes().then((data) => device.setTypes(data));
-    fetchBrands().then((data) => device.setBrands(data));
-    fetchProducts().then((data) => device.setDevices(data.rows));
+    fetchBrands().then((data) => {
+      device.setBrands(data);
+      console.log(data);
+    });
+    fetchProducts().then((data) => {
+      console.log("Products:", data); 
+      device.setDevices(data.rows);
+    });
   }, [device]);
-
-  // useEffect(() => {
-  //   fetchProducts()
-  //     .then((data) => device.setDevices(data.rows))
-  //     .catch((error) => console.error(error));
-  // }, [device]);
 
   return (
     <Container>

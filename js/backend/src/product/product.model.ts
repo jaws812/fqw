@@ -5,7 +5,7 @@ import { ProductChar } from "src/product-char/product-char.model";
 import { Type } from "src/type/type.model";
 
 interface ProductCreationAttrs {
-  name:number;
+  name:string;
   describe:string;
   price:number;
   idBrand:number;

@@ -12,8 +12,8 @@ import { Brand } from "src/brand/brand.model";
 import { Product } from "src/product/product.model";
 
 interface TypeCreationAttrs {
-  // idBrand: number;
-  name:string;
+  idBrand: number;
+  name: string;
 }
 
 @Table({ tableName: "type" })
@@ -26,13 +26,12 @@ export class Type extends Model<Type, TypeCreationAttrs> {
   })
   idType: number;
 
-
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   name: string;
 
   @HasMany(() => Product)
   products: Product[];
 
-  @BelongsToMany(() => Brand, ()=>BrandType)
+  @BelongsToMany(() => Brand, () => BrandType)
   brands: Brand[];
 }
