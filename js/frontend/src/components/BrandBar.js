@@ -5,18 +5,19 @@ import { Card, Row } from "react-bootstrap";
 
 const BrandBar = observer(() => {
   const { device } = useContext(Context);
-  console.log("значение device.brands " + device.brands + " ");
+  // console.log("значение device.brands " + device.brands + " ");
   return (
     <Row className={"d-flex"}>
       {device.brands.map((brand) => (
         <Card
-          style={{ cursor: "pointer" }}
-          key={brand.id}
+          style={{ cursor: "pointer", width: "25%" }}
+          key={brand.idBrand}
           className="p-3"
           onClick={() => device.setSelectedBrand(brand)}
-          border={brand.id === device.selectedBrand.id ? "danger" : "light"}
+          border={brand.idBrand === device.selectedBrand.idBrand ? "danger" : "light"}
         >
           {brand.name}
+          
         </Card>
       ))}
     </Row>

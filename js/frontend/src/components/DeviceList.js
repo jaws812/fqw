@@ -6,13 +6,23 @@ import DeviceItem from "./DeviceItem";
 
 const DeviceList = observer(() => {
   const { device } = useContext(Context);
-  console.log("значение device.devices " + device.devices + " ");
+
+  // useEffect(() => {
+  //   fetchProducts().then((data) => {
+  //     console.log("Products:", data);
+  //     device.setDevices(data);
+  //   });
+  // }, [device]);
+
+  // console.log(device.devices);
+
+  // const context = useContext(Context);
+  // // console.log(context);
   return (
     <Row className="d-flex">
-      {device.devices &&
-        device.devices.map((device) => (
-          <DeviceItem key={device.id} device={device}></DeviceItem>
-        ))}
+      {device.devices.map((device) => (
+        <DeviceItem key={device.idProduct} device={device}></DeviceItem>
+      ))}
     </Row>
   );
 });

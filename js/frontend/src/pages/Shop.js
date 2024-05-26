@@ -13,11 +13,9 @@ const Shop = observer(() => {
     fetchTypes().then((data) => device.setTypes(data));
     fetchBrands().then((data) => {
       device.setBrands(data);
-      console.log(data);
     });
     fetchProducts().then((data) => {
-      console.log("Products:", data); 
-      device.setDevices(data.rows);
+      device.setDevices(data);
     });
   }, [device]);
 
