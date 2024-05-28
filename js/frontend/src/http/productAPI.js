@@ -26,9 +26,9 @@ export const fetchBrands = async () => {
 
 //товары
 
-export const createProduct = async (device) => {
-  const { data } = await $authHost.post(
-    "http://localhost:5000/product",
+export const createProductApi = async (device) => {
+  const { data } = await $host.post(
+    "http://localhost:5000/product/char-product",
     device
   );
   return data;
@@ -41,7 +41,7 @@ export const fetchProducts = async () => {
 
 //один товар
 
-export const fetchOneProduct = async (id) => {
-  const { data } = await $host.get("http://localhost:5000/product" + id);
+export const fetchOneProduct = async (idProduct) => {
+  const { data } = await $host.get("http://localhost:5000/product/" + idProduct);
   return data;
 };

@@ -28,12 +28,14 @@ export class ProductChar extends Model<ProductChar, ProductCharCreationAttrs> {
   @Column({ type: DataType.INTEGER })
   idProduct: number;
 
-  @Column({ type: DataType.STRING, allowNull:false })
+  @Column({ type: DataType.STRING, allowNull: false })
   title: string;
 
-  @Column({ type: DataType.STRING, allowNull:false })
+  @Column({ type: DataType.STRING, allowNull: false })
   description: string;
 
   @BelongsTo(() => Product)
-  idProd: Product;
+  idWork: Product;
+  // @BelongsTo(() => Product, "idProduct") 
+  // idProd: Product;
 }

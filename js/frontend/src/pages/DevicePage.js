@@ -1,24 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { fetchOneProduct } from "../http/productAPI";
 
 const DevicePage = () => {
-  const device = { id: 1, name: "iphone 12", price: 2500, rating: 2 };
-
-  const description = [
-    { id: 1, title: "Оперативная память", description: " 5 гб" },
-    { id: 2, title: "Камера", description: " 12 мп" },
-    { id: 3, title: "Процессор", description: " Пентиум 3" },
-    { id: 4, title: "Ядра", description: " 2" },
-    { id: 5, title: "Аккумулятор", description: " 1000 maH" },
-  ];
-
-  // const [device, setDevice] = useState({ info: [] });
-
-  // const {id} = useParams();
-
-  // useEffect(() => {
-  //   fetchOneProduct(id).then(data=>setDevice(data))
-  // }, []);
+  const [device, setDevice] = useState({ info: [] });
+  const { id } = useParams();
+  useEffect(() => {
+    fetchOneProduct(id).then((data) => setDevice(data));
+  }, [id]);
 
   return (
     <Container className="mt-3">
@@ -47,10 +37,13 @@ const DevicePage = () => {
         </Col>
       </Row>
       <Row className="d-flex flex-column m-3"></Row>
+      <h1>Описание</h1>
+      <Row className="ms-1">{device.describe}</Row>
 
       <Row className="d-flex flex-column m-3">
-        <h1>Характеристики</h1>
-        {description.map((info, index) => (
+        <h2>Характеристики</h2>
+        {console.log('Содержимое переменной info1:', device.info)}
+        {device.info?.map((info, index) => (
           <Row
             key={info.id}
             style={{
@@ -58,9 +51,13 @@ const DevicePage = () => {
               padding: 10,
             }}
           >
+            
             {info.title}:{info.description}
           </Row>
+          
         ))}
+            {console.log('Содержимое переменной info2:', device.info)}
+
       </Row>
     </Container>
   );

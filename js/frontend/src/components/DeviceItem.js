@@ -10,7 +10,7 @@ const DeviceItem = ({ device }) => {
     <Col
       md={3}
       className={"mt-3"}
-      onClick={() => navigate(DEVICE_ROUTE + "/" + device.id)}
+      onClick={() => navigate(DEVICE_ROUTE + "/" + device.idProduct)}
     >
       <Card style={{ width: 150, cursor: "pointer" }} border={"light"}>
         <Image width={150} height={150} />

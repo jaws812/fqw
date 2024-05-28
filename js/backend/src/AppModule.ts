@@ -25,6 +25,7 @@ import { Brand } from "./brand/brand.model";
 import { TypeModule } from "./type/type.module";
 import { Type } from "./type/type.model";
 import { BrandType } from "./brand/brand-type.model";
+import { ProductCharModule } from "./product-char/product-char.module";
 
 @Module({
   controllers: [],
@@ -55,7 +56,8 @@ import { BrandType } from "./brand/brand-type.model";
     CartProductModule,
     BrandModule,
     ProductModule,
-    TypeModule
+    TypeModule,
+    ProductCharModule,
   ],
 })
 export class AppModule {}

@@ -41,7 +41,6 @@ const Auth = observer(() => {
         // eslint-disable-next-line
         data = await registration(email, password);
       }
-      console.log(data);
       user.setUser(user);
       user.setIsAuth(true);
       navigate(SHOP_ROUTE);
@@ -64,7 +63,8 @@ const Auth = observer(() => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Form.Control
+          
+          <Form.Control 
             className="mt-3"
             placeholder="Введите ваш пароль..."
             value={password}
