@@ -7,6 +7,8 @@ export default class DeviceStore {
     this._devices = [];
     this._selectedType = {};
     this._selectedBrand = {};
+    //new for device
+    this._selectedDevice = {};
 
     makeAutoObservable(this);
   }
@@ -31,6 +33,11 @@ export default class DeviceStore {
     this._selectedBrand = brand;
   }
 
+  //new for device
+  setSelectedDevice(device) {
+    this._selectedDevice = device;
+  }
+
   get types() {
     return this._types;
   }
@@ -48,5 +55,9 @@ export default class DeviceStore {
   }
   get selectedBrand() {
     return this._selectedBrand;
+  }
+  //new for device
+  get selectedDevice() {
+    return this._selectedDevice;
   }
 }

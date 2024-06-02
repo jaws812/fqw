@@ -20,7 +20,6 @@ export class ProductController {
   @Post()
   @UseInterceptors(FilesInterceptor("images"))
   create(@Body() dto: CreateProductDto, @UploadedFile() images) {
-    console.log("controlle images =  "+images);
     return this.productService.createProduct(dto, images);
   }
 
@@ -30,12 +29,6 @@ export class ProductController {
     return this.productService.createProductWithChar(dto);
   }
 
-  // @Post("/upload-multiple")
-  // @UseInterceptors(FilesInterceptor("images"))
-  // createWithMultipleImages(@Body() dto: CreateProductDto, @UploadedFiles() images
-  // ) {
-  //   return this.productService.createProduct(dto, images);
-  // }
 
   @Get()
   getAll() {
