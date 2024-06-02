@@ -1,27 +1,42 @@
-import { Body, Controller, Get, Param, Post, UseInterceptors } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  UploadedFile,
+  UploadedFiles,
+  UseInterceptors,
+} from "@nestjs/common";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { ProductService } from "./product.service";
 import { CreateProductAndCharDto } from "./dto/create-productAndChar.dto";
-import { FileInterceptor } from "@nestjs/platform-express";
+import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express";
 
 @Controller("product")
 export class ProductController {
-  constructor(private productService: ProductService,) {}
+  constructor(private productService: ProductService) {}
 
   @Post()
-  create(@Body() dto: CreateProductDto) {
-    return this.productService.createProduct(dto);
+  @UseInterceptors(FilesInterceptor("images"))
+  create(@Body() dto: CreateProductDto, @UploadedFile() images) {
+    console.log("controlle images =  "+images);
+    return this.productService.createProduct(dto, images);
   }
 
-
   @Post("/char-product")
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor("file"))
   createProductAndChar(@Body() dto: CreateProductAndCharDto) {
     return this.productService.createProductWithChar(dto);
   }
 
+  // @Post("/upload-multiple")
+  // @UseInterceptors(FilesInterceptor("images"))
+  // createWithMultipleImages(@Body() dto: CreateProductDto, @UploadedFiles() images
+  // ) {
+  //   return this.productService.createProduct(dto, images);
+  // }
 
-  
   @Get()
   getAll() {
     return this.productService.getAllProduct();

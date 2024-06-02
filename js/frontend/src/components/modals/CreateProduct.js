@@ -13,8 +13,6 @@ const CreateProduct = observer(({ show, onHide }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [describe, setDescribe] = useState("");
-  // const [brand, setBrand] = useState(null);
-  // const [type, setType] = useState(null);
   const [info, setInfo] = useState([]);
 
   useEffect(() => {

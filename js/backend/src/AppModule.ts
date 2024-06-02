@@ -26,6 +26,7 @@ import { TypeModule } from "./type/type.module";
 import { Type } from "./type/type.model";
 import { BrandType } from "./brand/brand-type.model";
 import { ProductCharModule } from "./product-char/product-char.module";
+import { Image } from "./image/image.model";
 
 @Module({
   controllers: [],
@@ -44,7 +45,7 @@ import { ProductCharModule } from "./product-char/product-char.module";
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, UserAddress, Role, UserRoles, Cart, CartProduct, Product, ProductChar, Brand,Type, BrandType],
+      models: [User, UserAddress, Role, UserRoles, Cart, CartProduct, Product, ProductChar, Brand,Type, BrandType, Image],
       autoLoadModels: true,
     }),
     UsersModule,

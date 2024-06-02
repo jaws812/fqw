@@ -5,29 +5,45 @@ import { CreateProductDto } from "./dto/create-product.dto";
 import { CreateProductCharDto } from "src/product-char/dto/create-product-char.dto";
 import { CreateProductAndCharDto } from "./dto/create-productAndChar.dto";
 import { ProductCharService } from "src/product-char/product-char.service";
+import { Image } from "src/image/image.model";
+import { ImageService } from "src/image/image.service";
 
 @Injectable()
 export class ProductService {
   constructor(
     @InjectModel(Product) private productRepository: typeof Product,
-    private charService: ProductCharService
+    private charService: ProductCharService,
+    private imageService: ImageService
   ) {}
 
-  async createProduct(dto: CreateProductDto) {
-    const product = await this.productRepository.create(dto);
+  async createProduct(dto: CreateProductDto, images) {
+
+    const { name, describe, price, idBrand, idType } = dto;
+
+    const product = await this.productRepository.create({
+      name,
+      describe,
+      price,
+      idBrand,
+      idType,
+    });
+    console.log("images =  "+images)
+    // const product = await this.imageService.createImage();
+    await this.imageService.createImage({idProduct: product.idProduct}, images);
+
+    
     return product;
   }
 
   async createProductWithChar(dto: CreateProductAndCharDto) {
     const product = await this.productRepository.create(dto);
-    
-    for (const character of JSON.parse(dto.character) ) {
+
+    for (const character of JSON.parse(dto.character)) {
       const air = {
         idProduct: character.idProduct,
         title: character.title,
         description: character.description,
       };
-      
 
       air.idProduct = product.idProduct;
       const char = await this.charService.createProductChar(air);

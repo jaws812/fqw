@@ -13,7 +13,19 @@ const DeviceItem = ({ device }) => {
       onClick={() => navigate(DEVICE_ROUTE + "/" + device.idProduct)}
     >
       <Card style={{ width: 150, cursor: "pointer" }} border={"light"}>
-        <Image width={150} height={150} />
+      {device.images && device.images.length > 0 ? (
+        <Image
+          width={150}
+          height={150}
+          src={"http://localhost:5000/" + device.images[0].image }
+          alt="Ошибка отображения фотографии"
+          
+        />
+      ) : (
+        <div>Изображение не найдено</div>
+        
+      )}
+        {console.log()}
         <div className="text-black-50 d-flex justify-content-between align-items-center"></div>
         <div>{device.name}</div>
       </Card>

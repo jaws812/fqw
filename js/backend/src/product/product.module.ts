@@ -8,6 +8,8 @@ import { ProductChar } from "src/product-char/product-char.model";
 import { Brand } from "src/brand/brand.model";
 import { Type } from "src/type/type.model";
 import { ProductCharModule } from "src/product-char/product-char.module";
+import { Image } from "src/image/image.model";
+import { ImageModule } from "src/image/image.module";
 
 @Module({
   providers: [ProductService],
@@ -19,7 +21,8 @@ import { ProductCharModule } from "src/product-char/product-char.module";
       Type,
       CartProduct,
       ProductChar,
-    ]),ProductCharModule
+      Image
+    ]),ProductCharModule, ImageModule
   ],
   
 })
