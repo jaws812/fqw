@@ -3,7 +3,7 @@ import { Context } from "../index";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from "../utils/consts";
+import { ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from "../utils/consts";
 import { Button, Container } from "react-bootstrap";
 import { observer } from "mobx-react-lite";
 
@@ -30,11 +30,19 @@ const NavBar = observer(() => {
             <Button
               variant={"outline-light"}
               className="ms-2"
+              onClick={()=>navigate(BASKET_ROUTE)}              
+            >
+              Корзина{" "}
+            </Button>
+            <Button
+              variant={"outline-light"}
+              className="ms-2"
               onClick={() => logOut()}
               
             >
               Выйти{" "}
             </Button>
+            
           </Nav>
         ) : (
           <Nav className="ms-auto" style={{ color: "white" }}>

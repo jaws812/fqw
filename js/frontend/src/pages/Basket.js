@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
 
-const Basket=()=>{
-  return (
-    <div>
-      Basket
-    </div>
-  )
-}
+const Basket = () => {
+  // const { user } = useContext(Context);
+
+
+  return <div>Basket</div>;
+};
 
 export default Basket;

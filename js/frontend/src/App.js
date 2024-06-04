@@ -12,13 +12,13 @@ const App = observer(() => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    check()
-      .then((data) => {
-        user.setUser(true);
+    check().then((data) => {
+        user.setUser(data);
+        console.log(data)
         user.setIsAuth(true);
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [user]);
 
   if (loading) {
     return <Spinner animation={"grow"} />;

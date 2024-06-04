@@ -37,14 +37,7 @@ const AppRouter = () => {
       })}
       <Route path="*" element={<Navigate to="/" replace />}></Route>
     </Routes>
-    // <Routes>
-    // <Route path='/' element={<Shop />}  ></Route>
-    // <Route path='/shop' element={<Shop />}  ></Route>
-    // <Route path='/auth' element={<Auth />}  ></Route>
-    // <Route path='/admin' element={<Admin />}  ></Route>
-    // <Route path='/basket' element={<Basket />}  ></Route>
-    // <Route path='/device' element={<DevicePage />}  ></Route>
-    // </Routes>
+   
   );
 };
 

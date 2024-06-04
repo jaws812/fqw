@@ -15,6 +15,22 @@ export class CartProductService {
         return cartP;
       }
 
+      // async findByUser(idUser: number) {
+      //   const cartP = await this.cartProductRepository.findOne({
+      //     where: {  
+      //       id:idUser
+      //      },
+      //     include: { all: true },
+      //   });
+      //   return cartP;
+      // }
+      // async findByUser(idUser) {
+      //   const cartP = await this.cartProductRepository.findAll({
+      //     where: { idUser },
+      //     include: { all: true },
+      //   });
+      //   return cartP;
+      // }
       async getAllCartProduct() {
         const cartP = await this.cartProductRepository.findAll({
           include: { all: true },

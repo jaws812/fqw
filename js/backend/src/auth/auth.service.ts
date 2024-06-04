@@ -13,13 +13,15 @@ import { LoginUserDto } from "./dto/login-user.dto";
 import { RegisterUserDto } from "./dto/register-user.dto";
 import { CreateUserAddressDto } from "src/user-address/dto/create-useraddress.dto";
 import { UserAddressService } from "src/user-address/user-address.service";
+import { CartService } from "src/cart/cart.service";
 
 @Injectable()
 export class AuthService {
   constructor(
     private userService: UsersService,
     private jwtService: JwtService,
-    private userAddressService: UserAddressService
+    private userAddressService: UserAddressService,
+    private cartService: CartService
   ) {}
 
   async login(userDto: LoginUserDto) {
@@ -46,11 +48,7 @@ export class AuthService {
     }
 
     const userCreate: CreateUserDto = {
-      // firstName: userDto.firstName,
-      // lastName: userDto.lastName,
-      // secondName: userDto?.secondName,
       email: userDto.email,
-      // userName: userDto.userName,
       password: userDto.password,
     };
 
@@ -62,39 +60,19 @@ export class AuthService {
 
     const currenUser = await this.userService.getUserByEmail(user.email);
 
-    // const adressCreate: CreateUserAddressDto = {
-    //   idUser: currenUser.idUser,
-    //   addrIndex: userDto.addrIndex,
-    //   addrCity: userDto.addrCity,
-    //   addrSreet: userDto.addrSreet,
-    //   addrHouse: userDto.addrHouse,
-    //   addrStructure: userDto?.addrStructure,
-    //   addrApart: userDto?.addrApart,
-    // };
-
-    // const userAddress =
-    //   await this.userAddressService.createAddress(adressCreate);
+    const cart = await this.cartService.createCart({
+      idUser: currenUser.idUser,
+    });
 
     return this.generateToken(user);
   }
 
-  // private async generateToken(user: User) {
-  //   const payload = {
-  //     email: user.email,
-  //     id: user.idUser,
-  //     // userName: user.userName,
-  //   };
-  //   return {
-  //     token: this.jwtService.sign(payload),
-  //   };
-  // }
-
   private async generateToken(user: User) {
-    const payload = {email: user.email, id: user.id, roles: user.roles}
+    const payload = { email: user.email, id: user.idUser };
     return {
-        token: this.jwtService.sign(payload)
-    }
-}
+      token: this.jwtService.sign(payload),
+    };
+  }
 
   private async validateUser(userDto: LoginUserDto) {
     console.log({ userDto });

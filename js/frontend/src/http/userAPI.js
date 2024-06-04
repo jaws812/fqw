@@ -1,90 +1,62 @@
 import { $authHost, $host } from "./index";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
-export const registration = async (email, password)=>{
-    const {data} = await $host.post('http://localhost:5000/auth/registration', {email, password})
-    localStorage.setItem('token', data.token)
-    return jwtDecode(data.token)
-}
+export const registration = async (email, password) => {
+  const { data } = await $host.post("http://localhost:5000/auth/registration", {
+    email,
+    password,
+  });
+  localStorage.setItem("token", data.token);
+  return jwtDecode(data.token);
+};
 
-export const login = async (email,password)=>{
-    const {data} = await $host.post('http://localhost:5000/auth/login', {email, password})
-    localStorage.setItem('token', data.token)
-    return jwtDecode(data.token)
-}
+export const login = async (email, password) => {
+  const { data } = await $host.post("http://localhost:5000/auth/login", {
+    email,
+    password,
+  });
+  localStorage.setItem("token", data.token);
 
-export const check = async () => {
-    const token = localStorage.getItem("token");
-    const decodeToken= jwtDecode(token);
-    const { data } = await $authHost.get('http://localhost:5000/auth/check', { params: { 
-        email:decodeToken.email,
-        id:decodeToken.id,
-     }
-     });
-     
+  return jwtDecode(data.token);
+};
 
-    localStorage.setItem('token', data.token);
-    return jwtDecode(data.token);
-}
-
-
-// это работает но только с определенным пользователем
 // export const check = async () => {
-//     const { data } = await $authHost.get('/auth/check', {
+//   let token = localStorage.getItem("token");
+
+//   // Проверяем, есть ли уже токен в localStorage
+  
+//     const decodeToken = jwtDecode(token);
+//     console.log("decode token =  ", decodeToken);
+//     console.log("token is  =  ", token);
+// // eslint-disable-next-line
+//     const { data } = await $authHost.get("http://localhost:5000/auth/check", {
 //       params: {
-//         email: 'n@m.r',
-//         id: 3,
+//         email: decodeToken.email,
+//         id: decodeToken.roles[0].UserRoles.idUser,
 //       },
 //     });
+
+//     // Сохраняем новый токен в localStorage
+//     localStorage.setItem("token", token);
   
-//     localStorage.setItem('token', data.token);
-//     return jwtDecode(data.token);
-//   };
+//   return jwtDecode(token);
+// };
 
+export const check = async () => {
+  const token = localStorage.getItem("token");
 
-// export const check = async ()=>{
-//     const {data} = await $authHost.get('http://localhost:5000/users')
-//     localStorage.setItem('token', data.token)
-//     return jwtDecode(data.token)
-// }
+  const decodeToken = jwtDecode(token);
 
-// export const check = async () => {
-//     const token = localStorage.getItem('token');
-//     const config = {
-//         headers: {
-//             Authorization: `Bearer ${token}`
-//         }
-//     };
-//     try {
-//         const { data } = await $authHost.get('http://localhost:5000/users', config);
-//         localStorage.setItem('token', data.token);
-//         return jwtDecode(data.token);
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
+  console.log("decode token =  ", decodeToken);
+  console.log("token is  =  ", token);
+  const { data } = await $authHost.get("http://localhost:5000/auth/check", {
+    params: {
+      email: decodeToken.email,
+      id: decodeToken.id, //      id: decodeToken.roles[0].UserRoles.idUser,
+    },
+  });
 
+  localStorage.setItem("token", data.token);
 
-// export const check = async () => {
-//     const token = localStorage.getItem('token');
-//     if (token === null) {
-//         // Handle the case when the token is null
-//         console.error('Token is null');
-//         return null;
-//     }
-//     const config = {
-//         headers: {
-//             Authorization: `Bearer ${token}`
-//         }
-//     };
-//     try {
-//         const { data } = await $authHost.get('http://localhost:5000/auth/auth', config);
-//         localStorage.setItem('token', data.token);
-//         return jwtDecode(data.token);
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
-
-
-//'http://localhost:5000/users'
+  return jwtDecode(data.token);
+};

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { CartService } from "./cart.service";
 import { CreateCartDto } from "./dto/create-cart.dto";
 
@@ -14,5 +14,10 @@ export class CartController {
   @Get()
   getAll() {
     return this.cartService.getAllCart();
+  }
+
+  @Get(":idUser")
+  getOne(@Param("idUser") idUser: number) {
+    return this.cartService.getCartByUserId(idUser);
   }
 }

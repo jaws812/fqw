@@ -25,7 +25,6 @@ const DeviceItem = ({ device }) => {
         <div>Изображение не найдено</div>
         
       )}
-        {console.log(device.images[0].image)}
         <div className="text-black-50 d-flex justify-content-between align-items-center"></div>
         <div>{device.name}</div>
       </Card>

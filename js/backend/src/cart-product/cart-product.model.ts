@@ -34,11 +34,11 @@ export class CartProduct extends Model<CartProduct, CartProductCreationAttrs> {
   idProduct: number; //ссылка на устройство
 
   @BelongsTo(() => Cart)
-  cart: Cart[];
+  infoAboutCart: Cart[];// содержит информацию о номере корзины(idCart) и id пользователя, которому принадлежит эта корзина
 
   @HasOne(() => Product, {
     foreignKey: "idProduct", //idProduct
     sourceKey: "idCartProduct", //idCartProduct
   })
-  idSecondCartProduct: Product;
+  productInCart: Product;//показывает какой товар пользователь добавил в корзину
 }

@@ -32,8 +32,8 @@ export class Cart extends Model<Cart, CartCreationAttrs> {
     foreignKey: "idUser", 
     sourceKey: "idCart",
   })
-  idCartUser: User;
+  infoAboutUser: User;//показывает информацию о пользователе, которому принадлежит корзина
 
   @HasMany(() => CartProduct)
-  cartProduct: CartProduct[];
+  allUsersCarts: CartProduct[];//показывет массив корзин пользователей и продукты в них
 }
