@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from "@nestjs/common";
 import { CartService } from "./cart.service";
 import { CreateCartDto } from "./dto/create-cart.dto";
 
@@ -17,7 +17,7 @@ export class CartController {
   }
 
   @Get(":idUser")
-  getOne(@Param("idUser") idUser: number) {
+  getOne(@Param("idUser", ParseIntPipe) idUser: number) {
     return this.cartService.getCartByUserId(idUser);
   }
 }

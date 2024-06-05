@@ -21,9 +21,17 @@ export class CartService {
   }
 
   async getCartByUserId(idUser: number) {
-    const cart = await this.cartRepository.findByPk(idUser, {
+    const cart = await this.cartRepository.findOne({
+      where: { idUser },
       include: { all: true },
     });
     return cart;
   }
+  
+//   async getCartByUserId(idUser: number) {
+//     const cart = await this.cartRepository.findOne(idUser, {
+//       include: { all: true },
+//     });
+//     return cart;
+//   }
 }

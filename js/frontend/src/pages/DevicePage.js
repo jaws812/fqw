@@ -3,29 +3,41 @@ import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { fetchOneProduct } from "../http/productAPI";
 import { Context } from "..";
-import {  createCartProduct, fetchOneCart } from "../http/cartAPI";
+import { createCartProduct, fetchOneCart } from "../http/cartAPI";
 
 const DevicePage = () => {
   const [devices, setDevice] = useState({ info: [] });
   const [carts, setCarts] = useState({});
-  const [idUser, setIdUser] = useState("");
-  const [userName, setUserName] = useState("");
+  // const [idUser, setIdUser] = useState("");
+  // const [userName, setUserName] = useState("");
   const { id } = useParams();
+  const { user } = useContext(Context); // Переместите эту строку перед useEffect
+
   useEffect(() => {
     fetchOneProduct(id).then((data) => setDevice(data));
-    fetchOneCart(user.user.id).then((data) => setCarts(data));
   }, [id]);
 
-  const { user } = useContext(Context);
-  const { device } = useContext(Context);
+  // useEffect(() => {
+  //   fetchOneCart(user.user.id).then((data) => setCarts(data));
+  // }, [ user.user.id]);
+  useEffect(() => {
+    fetchOneCart(user.user.id).then((data) => setCarts(data));
+  }, [user]); // Используйте user в качестве зависимости
 
+  // const { user } = useContext(Context);
+  // const { device } = useContext(Context);
 
   const addCartProduct = () => {
+    // if (carts) {
+    //   const idCart = carts.idCart;
+    //   createCartProduct(idCart, id);
+    // }
     const idCart = carts.idCart;
+    createCartProduct(idCart, id);
 
-    console.log("cart=  ", carts);
+    console.log("carts=  ", carts);
+    console.log("user.user.id=  ", user.user.id);
     console.log("cart.idCart=  ", carts.idCart);
-    createCartProduct(idCart, id); 
   };
 
   // const addToCart = async () => {
@@ -33,7 +45,7 @@ const DevicePage = () => {
   //   console.log(user);
   //   const userIdd = user.idUser;
   //   console.log(device);
-    
+
   // };
 
   return (
@@ -96,66 +108,3 @@ const DevicePage = () => {
 };
 
 export default DevicePage;
-
-// import React, { useEffect, useState } from "react";
-// import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
-// import { useParams } from "react-router-dom";
-// import { fetchOneProduct } from "../http/productAPI";
-
-// const DevicePage = () => {
-//   const [device, setDevice] = useState({ info: [] });
-//   const { id } = useParams();
-//   useEffect(() => {
-//     fetchOneProduct(id).then((data) => setDevice(data));
-//   }, [id]);
-
-//   return (
-//     <Container className="mt-3">
-//       <Row>
-//         <Col md={4}>
-//           <Image width={300} height={300}  />
-
-//         </Col>
-//         <Col md={4}>
-//           <Row className="d-flex flex-column align-items-center">
-//             <h2>{device.name}</h2>
-//           </Row>
-//         </Col>
-//         <Col md={4}>
-//           <Card
-//             className="d-flex flex-column align-items-center justify-content-around"
-//             style={{
-//               width: 300,
-//               height: 300,
-//               fontSize: 32,
-//               border: "5px solid lightgray",
-//             }}
-//           >
-//             <h3>{device.price} ₽</h3>
-//             <Button variant="outline-dark">Добавить в корзину</Button>
-//           </Card>
-//         </Col>
-//       </Row>
-//       <Row className="d-flex flex-column m-3"></Row>
-//       <h1>Описание</h1>
-//       <Row className="ms-1">{device.describe}</Row>
-
-//       <Row className="d-flex flex-column m-3">
-//         <h2>Характеристики</h2>
-//         {device.idProdChar?.map((info, index) => (
-//           <Row
-//             key={info.id}
-//             style={{
-//               background: index % 2 === 0 ? "lightgray" : "transparent",
-//               padding: 10,
-//             }}
-//           >
-//             {info.title}:{info.description}
-//           </Row>
-//         ))}
-//       </Row>
-//     </Container>
-//   );
-// };
-
-// export default DevicePage;
