@@ -8,45 +8,25 @@ import { createCartProduct, fetchOneCart } from "../http/cartAPI";
 const DevicePage = () => {
   const [devices, setDevice] = useState({ info: [] });
   const [carts, setCarts] = useState({});
-  // const [idUser, setIdUser] = useState("");
-  // const [userName, setUserName] = useState("");
+
   const { id } = useParams();
-  const { user } = useContext(Context); // Переместите эту строку перед useEffect
+  const { user } = useContext(Context);
 
   useEffect(() => {
     fetchOneProduct(id).then((data) => setDevice(data));
   }, [id]);
 
-  // useEffect(() => {
-  //   fetchOneCart(user.user.id).then((data) => setCarts(data));
-  // }, [ user.user.id]);
   useEffect(() => {
     fetchOneCart(user.user.id).then((data) => setCarts(data));
-  }, [user]); // Используйте user в качестве зависимости
-
-  // const { user } = useContext(Context);
-  // const { device } = useContext(Context);
+  }, [user]);
 
   const addCartProduct = () => {
-    // if (carts) {
-    //   const idCart = carts.idCart;
-    //   createCartProduct(idCart, id);
-    // }
     const idCart = carts.idCart;
     createCartProduct(idCart, id);
-
     console.log("carts=  ", carts);
     console.log("user.user.id=  ", user.user.id);
     console.log("cart.idCart=  ", carts.idCart);
   };
-
-  // const addToCart = async () => {
-  //   const userId = user.idUser;
-  //   console.log(user);
-  //   const userIdd = user.idUser;
-  //   console.log(device);
-
-  // };
 
   return (
     <Container className="mt-3">

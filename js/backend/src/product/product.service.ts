@@ -2,10 +2,8 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
 import { Product } from "./product.model";
 import { CreateProductDto } from "./dto/create-product.dto";
-import { CreateProductCharDto } from "src/product-char/dto/create-product-char.dto";
 import { CreateProductAndCharDto } from "./dto/create-productAndChar.dto";
 import { ProductCharService } from "src/product-char/product-char.service";
-import { Image } from "src/image/image.model";
 import { ImageService } from "src/image/image.service";
 
 @Injectable()
@@ -17,7 +15,6 @@ export class ProductService {
   ) {}
 
   async createProduct(dto: CreateProductDto, images) {
-
     const { name, describe, price, idBrand, idType } = dto;
 
     const product = await this.productRepository.create({
@@ -27,11 +24,12 @@ export class ProductService {
       idBrand,
       idType,
     });
-    console.log("images =  "+images)
-    // const product = await this.imageService.createImage();
-    await this.imageService.createImage({idProduct: product.idProduct}, images);
+    console.log("images =  " + images);
+    await this.imageService.createImage(
+      { idProduct: product.idProduct },
+      images
+    );
 
-    
     return product;
   }
 
@@ -47,8 +45,6 @@ export class ProductService {
 
       air.idProduct = product.idProduct;
       const char = await this.charService.createProductChar(air);
-      // product.idProdChar.push(char);
-      // await product.save();
     }
     return product;
   }

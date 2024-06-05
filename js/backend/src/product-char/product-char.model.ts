@@ -14,7 +14,7 @@ interface ProductCharCreationAttrs {
   description: string;
 }
 
-@Table({ tableName: "product-char" })
+@Table({ tableName: "product-char", createdAt: false, updatedAt: false })
 export class ProductChar extends Model<ProductChar, ProductCharCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
@@ -36,6 +36,6 @@ export class ProductChar extends Model<ProductChar, ProductCharCreationAttrs> {
 
   @BelongsTo(() => Product)
   idWork: Product;
-  // @BelongsTo(() => Product, "idProduct") 
+  // @BelongsTo(() => Product, "idProduct")
   // idProd: Product;
 }

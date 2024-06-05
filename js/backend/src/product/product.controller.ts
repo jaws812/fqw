@@ -5,7 +5,6 @@ import {
   Param,
   Post,
   UploadedFile,
-  UploadedFiles,
   UseInterceptors,
 } from "@nestjs/common";
 import { CreateProductDto } from "./dto/create-product.dto";

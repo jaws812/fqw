@@ -16,7 +16,7 @@ interface TypeCreationAttrs {
   name: string;
 }
 
-@Table({ tableName: "type" })
+@Table({ tableName: "type", createdAt: false, updatedAt: false })
 export class Type extends Model<Type, TypeCreationAttrs> {
   @Column({
     type: DataType.INTEGER,

@@ -17,7 +17,7 @@ interface UserCreationAttrs {
   password: string;
 }
 
-@Table({ tableName: "users" })
+@Table({ tableName: "users", createdAt: false, updatedAt: false })
 export class User extends Model<User, UserCreationAttrs> {
   // static save(user: User) {
   //   throw new Error("Method not implemented.");
@@ -36,7 +36,7 @@ export class User extends Model<User, UserCreationAttrs> {
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   email: string;
 
-  @BelongsToMany(()=>Role, ()=>UserRoles)
+  @BelongsToMany(() => Role, () => UserRoles)
   roles: Role[];
 
   @HasMany(() => UserAddress)
@@ -47,6 +47,4 @@ export class User extends Model<User, UserCreationAttrs> {
     sourceKey: "idUser",
   })
   idUserCart: Cart;
-
-
 }

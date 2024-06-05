@@ -14,7 +14,7 @@ interface CartCreationAttrs {
   idUser: number;
 }
 
-@Table({ tableName: "cart" })
+@Table({ tableName: "cart", createdAt: false, updatedAt: false })
 export class Cart extends Model<Cart, CartCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
@@ -29,11 +29,11 @@ export class Cart extends Model<Cart, CartCreationAttrs> {
   idUser: number;
 
   @HasOne(() => User, {
-    foreignKey: "idUser", 
+    foreignKey: "idUser",
     sourceKey: "idCart",
   })
-  infoAboutUser: User;//показывает информацию о пользователе, которому принадлежит корзина
+  infoAboutUser: User; //показывает информацию о пользователе, которому принадлежит корзина
 
   @HasMany(() => CartProduct)
-  allUsersCarts: CartProduct[];//показывет массив корзин пользователей и продукты в них
+  allUsersCarts: CartProduct[]; //показывет массив корзин пользователей и продукты в них
 }

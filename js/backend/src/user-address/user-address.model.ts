@@ -16,7 +16,7 @@ interface UserAddressCreationAttrs {
   apartment: string;
 }
 
-@Table({ tableName: "users-address" })
+@Table({ tableName: "users-address", createdAt: false, updatedAt: false })
 export class UserAddress extends Model<UserAddress, UserAddressCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
@@ -26,7 +26,7 @@ export class UserAddress extends Model<UserAddress, UserAddressCreationAttrs> {
   })
   idUserAddress: number;
 
-  @ForeignKey(() => User)// дописать связь в юзере
+  @ForeignKey(() => User) // дописать связь в юзере
   @Column({ type: DataType.INTEGER })
   idUser: number;
 
@@ -42,8 +42,6 @@ export class UserAddress extends Model<UserAddress, UserAddressCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   apartment: string;
 
-  @BelongsTo(()=> User)
+  @BelongsTo(() => User)
   user: User;
-
-
 }

@@ -15,7 +15,7 @@ interface BrandCreationAttrs {
   name: string;
 }
 
-@Table({ tableName: "brand" })
+@Table({ tableName: "brand", createdAt: false, updatedAt: false })
 export class Brand extends Model<Brand, BrandCreationAttrs> {
   @Column({
     type: DataType.INTEGER,

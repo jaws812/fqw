@@ -1,7 +1,7 @@
 import { action, makeAutoObservable, observable } from "mobx";
 
 export default class CartStore {
-  idCart = ""; // Инициализируйте idCart значением по умолчанию
+  idCart = "";
 
   constructor() {
     makeAutoObservable(this, {

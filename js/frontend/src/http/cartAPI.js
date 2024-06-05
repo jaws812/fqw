@@ -17,7 +17,7 @@ export const createCartProduct = async (idCart,idProduct) => {
   return data;
 };
 
-export const fetchCartProduct = async () => {
+export const fetchCartProductByIdUser = async () => {
   const { data } = await $host.get("http://localhost:5000/cart-product");
   return data;
 };

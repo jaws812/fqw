@@ -22,7 +22,7 @@ interface ProductCreationAttrs {
   idType: number;
 }
 
-@Table({ tableName: "product" })
+@Table({ tableName: "product", createdAt: false, updatedAt: false })
 export class Product extends Model<Product, ProductCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
@@ -64,6 +64,6 @@ export class Product extends Model<Product, ProductCreationAttrs> {
   @BelongsTo(() => Type)
   prodType: Type;
 
-  @HasMany(() => Image)//new
+  @HasMany(() => Image) //new
   images: Image[];
 }

@@ -27,11 +27,4 @@ export class CartService {
     });
     return cart;
   }
-  
-//   async getCartByUserId(idUser: number) {
-//     const cart = await this.cartRepository.findOne(idUser, {
-//       include: { all: true },
-//     });
-//     return cart;
-//   }
 }
