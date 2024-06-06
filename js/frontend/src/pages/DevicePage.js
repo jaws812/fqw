@@ -22,7 +22,7 @@ const DevicePage = () => {
 
   const addCartProduct = () => {
     const idCart = carts.idCart;
-    createCartProduct(idCart, id);
+    createCartProduct(idCart, id);//id это idProduct
     console.log("carts=  ", carts);
     console.log("user.user.id=  ", user.user.id);
     console.log("cart.idCart=  ", carts.idCart);
