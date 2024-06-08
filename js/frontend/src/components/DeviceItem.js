@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Col, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { DEVICE_ROUTE } from "../utils/consts";
+import './style.css';
 
 const DeviceItem = ({ device }) => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const DeviceItem = ({ device }) => {
       className={"mt-3"}
       onClick={() => navigate(DEVICE_ROUTE + "/" + device.idProduct)}
     >
-      <Card style={{ width: 150, cursor: "pointer" }} border={"light"}>
+      <Card className="product-item" style={{ width: 150, cursor: "pointer" }} border={"light"}>
       {device.images && device.images.length > 0 ? (
         <Image
           width={150}
@@ -27,6 +28,7 @@ const DeviceItem = ({ device }) => {
       )}
         <div className="text-black-50 d-flex justify-content-between align-items-center"></div>
         <div>{device.name}</div>
+        <div>{device.price}₽</div>
       </Card>
     </Col>
   );

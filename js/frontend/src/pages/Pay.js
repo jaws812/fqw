@@ -1,43 +1,30 @@
-// import React, { useEffect } from "react";
-// import "./Pay.css";
+// import React, { useState } from "react";
+// import { useForm } from "react-hook-form";
 
 // const Pay = () => {
-//   useEffect(() => {
-//     document.querySelector(".card-number-input").oninput = () => {
-//       document.querySelector(".card-number-box").innerHTML =
-//         document.querySelector(".card-number-input").value;
-//     };
-//     document.querySelector(".card-holder-input").oninput = () => {
-//       document.querySelector(".card-holder-name").innerHTML =
-//         document.querySelector(".card-holder-input").value;
-//     };
-//     document.querySelector(".month-input").oninput = () => {
-//       document.querySelector(".exp-month").innerHTML =
-//         document.querySelector(".month-input").value;
-//     };
-//     document.querySelector(".year-input").oninput = () => {
-//       document.querySelector(".exp-year").innerHTML =
-//         document.querySelector(".year-input").value;
-//     };
-//     document.querySelector(".cvv-input").onmouseenter = () => {
-//       document.querySelector(".front").style.transform =
-//         "perspective(1000px) rotateY(-180deg)";
-//       document.querySelector(".back").style.transform =
-//         "perspective(1000px) rotateY(0deg)";
-//     };
-//     document.querySelector(".cvv-input").onmouseleave = () => {
-//       document.querySelector(".front").style.transform =
-//         "perspective(1000px) rotateY(0deg)";
-//       document.querySelector(".back").style.transform =
-//         "perspective(1000px) rotateY(180deg)";
-//     };
-//     document.querySelector(".cvv-input").oninput = () => {
-//       document.querySelector(".cvv-box").innerHTML =
-//         document.querySelector(".cvv-input").value;
-//     };
-//   }, []);
-//   const htmlCode = `
-//   <body>
+//   return (
+//     <form >
+      
+//       <input  placeholder="First name" />
+//       <select >
+//         <option value="">Select...</option>
+//         <option value="A">Option A</option>
+//         <option value="B">Option B</option>
+//       </select>
+//       <textarea  placeholder="About you" />
+      
+//       <input type="submit" />
+//     </form>
+//   );
+// };
+
+// export default Pay;
+
+// import React from "react";
+// import './Pay.css';
+
+// const Pay = () => {
+//   return (
 //     <div class="container">
 //       <div class="card-container">
 //         <div class="front">
@@ -84,7 +71,9 @@
 //           <div class="inputBox">
 //             <span>Expiration mm</span>
 //             <select name="" id="" class="month-input">
-//               <option value="month" selected disabled>month</option>
+//               <option value="month" selected disabled>
+//                 month
+//               </option>
 //               <option value="01">01</option>
 //               <option value="02">02</option>
 //               <option value="03">03</option>
@@ -103,7 +92,9 @@
 //           <div class="inputBox">
 //             <span>Expiration yy</span>
 //             <select name="" id="" class="year-input">
-//               <option value="year" selected disabled>year</option>
+//               <option value="year" selected disabled>
+//                 year
+//               </option>
 //               <option value="2024">2024</option>
 //               <option value="2025">2025</option>
 //               <option value="2026">2026</option>
@@ -126,45 +117,7 @@
 //       </form>
 //     </div>
 
-//     <script>
-//       document.querySelector(".card-number-input").oninput = () => {
-//         document.querySelector(".card-number-box").innerHTML =
-//           document.querySelector(".card-number-input").value;
-//       };
-//       document.querySelector(".card-holder-input").oninput = () => {
-//         document.querySelector(".card-holder-name").innerHTML =
-//           document.querySelector(".card-holder-input").value;
-//       };
-//       document.querySelector(".month-input").oninput = () => {
-//         document.querySelector(".exp-month").innerHTML =
-//           document.querySelector(".month-input").value;
-//       };
-//       document.querySelector(".year-input").oninput = () => {
-//         document.querySelector(".exp-year").innerHTML =
-//           document.querySelector(".year-input").value;
-//       };
-//       document.querySelector(".cvv-input").onmouseenter = () => {
-//         document.querySelector(".front").style.transform =
-//           "perspective(1000px) rotateY(-180deg)";
-//         document.querySelector(".back").style.transform =
-//           "perspective(1000px) rotateY(0deg)";
-//       };
-//       document.querySelector(".cvv-input").onmouseleave = () => {
-//         document.querySelector(".front").style.transform =
-//           "perspective(1000px) rotateY(0deg)";
-//         document.querySelector(".back").style.transform =
-//           "perspective(1000px) rotateY(180deg)";
-//       };
-//       document.querySelector(".cvv-input").oninput = () => {
-//         document.querySelector(".cvv-box").innerHTML =
-//           document.querySelector(".cvv-input").value;
-//       };
-//     </script>
-//   </body>
-
-//   `;
-
-//   return <div dangerouslySetInnerHTML={{ __html: htmlCode }} />;
+//   );
 // };
 
 // export default Pay;

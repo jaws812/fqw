@@ -1,0 +1,48 @@
+.shop-container {
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  min-height: 100vh;
+  padding: 50px;
+  color: #fff;
+  text-align: center;
+}
+
+.type-bar {
+  color: rgb(7, 8, 8);
+  margin-top: 10px;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: rgb(18, 152, 74);
+}
+
+.brand-bar {
+  color: rgb(7, 8, 8);
+  margin-top: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: rgb(18, 152, 74);
+}
+
+.device-item {
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.product-item{
+  background-color: rgba(177, 179, 86, 0.55);
+  border-radius: 10px;
+  font-weight: bold;
+  padding-bottom:10%;
+
+}
+
+device-page-info{
+  background-color: rgba(227, 7, 7, 0.55);
+  border-radius: 10px;
+  font-weight: bold;
+  padding-bottom:10%;
+}

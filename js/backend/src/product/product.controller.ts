@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   Post,
+  Query,
   UploadedFile,
   UseInterceptors,
 } from "@nestjs/common";
@@ -28,14 +29,23 @@ export class ProductController {
     return this.productService.createProductWithChar(dto);
   }
 
-
   @Get()
   getAll() {
     return this.productService.getAllProduct();
+  }
+
+  @Get("/filter")
+  async getProductsByBrandAndType(
+    @Query("idBrand") idBrand: number,
+    @Query("idType") idType: number
+  ) {
+    return this.productService.getProductsByBAT(idBrand, idType);
   }
 
   @Get(":idProduct")
   getOne(@Param("idProduct") idProduct: number) {
     return this.productService.getOneProduct(idProduct);
   }
+
+  
 }

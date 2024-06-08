@@ -3,6 +3,7 @@ import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { fetchOneProduct } from "../http/productAPI";
 import { Context } from "..";
+import './style.css';
 import { createCartProduct, fetchOneCart } from "../http/cartAPI";
 
 const DevicePage = () => {
@@ -29,7 +30,7 @@ const DevicePage = () => {
   };
 
   return (
-    <Container className="mt-3">
+    <Container className="mt-3 device-page-info">
       <Row>
         <Col md={4}>
           {devices.images && devices.images.length > 0 ? (
@@ -59,7 +60,7 @@ const DevicePage = () => {
           >
             <h3>{devices.price} ₽</h3>
 
-            <Button variant="outline-dark" onClick={addCartProduct}>
+            <Button variant="outline-dark" style={{color: 'green'}} onClick={addCartProduct}>
               Добавить в корзину
             </Button>
           </Card>
@@ -75,7 +76,7 @@ const DevicePage = () => {
           <Row
             key={info.id}
             style={{
-              background: index % 2 === 0 ? "lightgray" : "transparent",
+              background: index % 2 === 0 ? "#f8f9fa" : "transparent",
               padding: 10,
             }}
           >

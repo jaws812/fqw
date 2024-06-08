@@ -42,6 +42,17 @@ export const fetchProducts = async () => {
 //один товар
 
 export const fetchOneProduct = async (idProduct) => {
-  const { data } = await $host.get("http://localhost:5000/product/" + idProduct);
+  const { data } = await $host.get(
+    "http://localhost:5000/product/" + idProduct
+  );
+  return data;
+};
+
+export const fetchProductsByBrandAndType = async (idBrand, idType) => {
+  const { data } = await $host.get(
+    `http://localhost:5000/product/filter?idBrand=${idBrand}&idType=${idType}`,
+    idBrand,
+    idType
+  );
   return data;
 };

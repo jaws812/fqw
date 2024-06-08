@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "..";
 import Row from "react-bootstrap/Row";
 import DeviceItem from "./DeviceItem";
+import './style.css';
 
 const DeviceList = observer(() => {
   const { device } = useContext(Context);
@@ -19,7 +20,7 @@ const DeviceList = observer(() => {
   // const context = useContext(Context);
   // // console.log(context);
   return (
-    <Row className="d-flex">
+    <Row className="d-flex device-item" >
       {device.devices.map((device) => (
         <DeviceItem key={device.idProduct} device={device}></DeviceItem>
       ))}

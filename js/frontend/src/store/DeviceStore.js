@@ -10,6 +10,11 @@ export default class DeviceStore {
     //new for device
     this._selectedDevice = {};
 
+    // this._page=1;
+    // this._totalCount=0;
+    // this._limit=3;    
+
+
     makeAutoObservable(this);
   }
 
@@ -33,10 +38,18 @@ export default class DeviceStore {
     this._selectedBrand = brand;
   }
 
-  //new for device
   setSelectedDevice(device) {
     this._selectedDevice = device;
   }
+
+  // setPage(page) {
+  //   this._page = page;
+  // }
+
+  //new for device
+  // setTotlaCount(count) {
+  //   this._totalCount = count;
+  // }
 
   get types() {
     return this._types;
@@ -60,4 +73,15 @@ export default class DeviceStore {
   get selectedDevice() {
     return this._selectedDevice;
   }
+
+
+  // get totalCount() {
+  //   return this._totalCount;
+  // }
+  // get page() {
+  //   return this._page;
+  // }
+  // get limit() {
+  //   return this._limit;
+  // }
 }

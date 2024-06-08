@@ -63,4 +63,13 @@ export class ProductService {
     });
     return product;
   }
+
+  async getProductsByBAT(idBrand: number, idType: number) {
+    return this.productRepository.findAll({
+      where: {
+        idBrand,
+        idType,
+      },
+    });
+  }
 }
