@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "..";
-import { Button, Container, Row } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import { createOrderAddress } from "../http/addressAPI";
 import { useNavigate } from "react-router-dom";
 import { PAY_ROUTE } from "../utils/consts";
@@ -21,42 +21,54 @@ const Order = () => {
     <Container>
       <h1 style={{ textAlign: "center" }}>Оформление заказа</h1>
       <Row>
-        <label>Город:</label>
-        <input
-          placeholder={"Введите название города"}
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
+        <Col xs={12} md={6}> 
+          <label style={{ width: "100%", marginLeft: "21rem" }}>Город:</label>
+          <input
+            style={{ width: "100%", marginLeft: "21rem" }}
+            placeholder={"Введите название города"}
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </Col>
       </Row>
       <Row>
-        <label>Улица:</label>
-        <input
-          placeholder={"Введите название улицы"}
-          type="text"
-          value={street}
-          onChange={(e) => setStreet(e.target.value)}
-        />
+        <Col xs={12} md={6}>
+          <label style={{ width: "100%", marginLeft: "21rem" }}>Улица:</label>
+          <input
+            style={{ width: "100%", marginLeft: "21rem" }}
+            placeholder={"Введите название улицы"}
+            type="text"
+            value={street}
+            onChange={(e) => setStreet(e.target.value)}
+          />
+        </Col>
       </Row>
       <Row>
-        <label>Дом:</label>
-        <input
-          placeholder={"Введите номер дома"}
-          type="text"
-          value={house}
-          onChange={(e) => setHouse(e.target.value)}
-        />
+        <Col xs={12} md={6}>
+          <label style={{ width: "100%", marginLeft: "21rem" }}>Дом:</label>
+          <input
+            style={{ width: "100%", marginLeft: "21rem" }}
+            placeholder={"Введите номер дома"}
+            type="number"
+            value={house}
+            onChange={(e) => setHouse(e.target.value)}
+          />
+        </Col>
       </Row>
       <Row>
-        <label>Квартира:</label>
-        <input
-          placeholder={"Введите номер квартиры"}
-          type="text"
-          value={apartment}
-          onChange={(e) => setApartment(e.target.value)}
-        />
+        <Col xs={12} md={6}>
+          <label style={{ width: "100%", marginLeft: "21rem" }}>Квартира:</label>
+          <input
+            style={{ width: "100%", marginLeft: "21rem" }}
+            placeholder={"Введите номер квартиры"}
+            type="number"
+            value={apartment}
+            onChange={(e) => setApartment(e.target.value)}
+          />
+        </Col>
       </Row>
-      <Button style={{ width: "100%" }} onClick={handleOrder}>
+      <Button style={{ width: "80%", marginTop: "20px", marginLeft: "9rem" }} onClick={handleOrder}>
         Оформить заказ
       </Button>
     </Container>

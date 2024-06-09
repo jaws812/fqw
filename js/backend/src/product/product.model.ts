@@ -50,8 +50,8 @@ export class Product extends Model<Product, ProductCreationAttrs> {
   idType: number;
 
   @HasOne(() => CartProduct, {
-    foreignKey: "idProduct", //idCartProduct
-    sourceKey: "idProduct", //idProduct
+    foreignKey: "idProduct", 
+    sourceKey: "idProduct", 
   })
   idProductCart: CartProduct;
 
@@ -64,6 +64,6 @@ export class Product extends Model<Product, ProductCreationAttrs> {
   @BelongsTo(() => Type)
   prodType: Type;
 
-  @HasMany(() => Image) //new
+  @HasMany(() => Image) 
   images: Image[];
 }

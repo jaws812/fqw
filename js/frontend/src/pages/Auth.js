@@ -63,8 +63,8 @@ const Auth = observer(() => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          
-          <Form.Control 
+
+          <Form.Control
             className="mt-3"
             placeholder="Введите ваш пароль..."
             value={password}
@@ -75,11 +75,16 @@ const Auth = observer(() => {
             {isLogin ? (
               <div>
                 Нет аккаунта?{" "}
-                <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
+                <NavLink style={{ color: "green" }} to={REGISTRATION_ROUTE}>
+                  Зарегистрируйтесь!
+                </NavLink>
               </div>
             ) : (
               <div>
-                Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войдите!</NavLink>
+                Есть аккаунт?{" "}
+                <NavLink style={{ color: "green" }} to={LOGIN_ROUTE}>
+                  Войдите!
+                </NavLink>
               </div>
             )}
             <Button variant={"outline-success"} onClick={click}>

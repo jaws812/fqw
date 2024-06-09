@@ -54,6 +54,8 @@ const Basket = () => {
           .map((product) => (
             <Row xs={2} key={product.id}>
               {/* <Col xs={6}> */}
+              
+
               <div>
                 {product.images && product.images.length > 0 ? (
                   <Image
@@ -64,7 +66,7 @@ const Basket = () => {
                   <div>Изображение не найдено</div>
                 )}
                 {/* </Col> */}
-                <div style={{ marginLeft: "180px", marginTop: "-150px" }}>
+                <div style={{ marginLeft: "180px", marginTop: "-120px" }}>
                   <p><b>{product.name}</b></p>
                   <p>{product.price}₽</p>
                   <p>Количество: {productCountMap[product.name]}</p>

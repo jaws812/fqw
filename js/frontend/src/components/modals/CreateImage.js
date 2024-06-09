@@ -18,11 +18,10 @@ const CreateImage = observer(({ show, onHide }) => {
     setFile(e.target.files[0]);
   };
 
-  const addProduct = () => {
+  const addProductPhoto = () => {
     const formData = new FormData();
     formData.append("idProduct", device.selectedDevice.idProduct);
     formData.append("images", file);
-
     createImage(formData).then((data) => onHide());
   };
 
@@ -57,7 +56,7 @@ const CreateImage = observer(({ show, onHide }) => {
         <Button variant="outline-danger" onClick={onHide}>
           Закрыть
         </Button>
-        <Button variant="outline-sucsess" onClick={addProduct}>
+        <Button variant="outline-sucsess" onClick={addProductPhoto}>
           Добавить
         </Button>
       </Modal.Footer>

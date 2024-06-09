@@ -9,7 +9,6 @@ import { createCartProduct, fetchOneCart } from "../http/cartAPI";
 const DevicePage = () => {
   const [devices, setDevice] = useState({ info: [] });
   const [carts, setCarts] = useState({});
-
   const { id } = useParams();
   const { user } = useContext(Context);
 
@@ -23,10 +22,7 @@ const DevicePage = () => {
 
   const addCartProduct = () => {
     const idCart = carts.idCart;
-    createCartProduct(idCart, id);//id это idProduct
-    console.log("carts=  ", carts);
-    console.log("user.user.id=  ", user.user.id);
-    console.log("cart.idCart=  ", carts.idCart);
+    createCartProduct(idCart, id); //id это idProduct
   };
 
   return (
