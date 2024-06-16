@@ -12,21 +12,24 @@ export class UsersService {
     private roleService: RolesService
   ) {}
 
-  async addRole(dto:AddRoleDto){
+  async addRole(dto: AddRoleDto) {
     const user = await this.userRepository.findByPk(dto.idUser);
     const role = await this.roleService.getRoleByValue(dto.value);
-    if(user && role){
-      await user.$add('role', role.idRole);
+    if (user && role) {
+      await user.$add("role", role.idRole);
       return dto;
     }
-    throw new HttpException('Пользователь или роль не найдены', HttpStatus.NOT_FOUND);
+    throw new HttpException(
+      "Пользователь или роль не найдены",
+      HttpStatus.NOT_FOUND
+    );
   }
 
   async createUser(dto: CreateUserDto) {
     const user = await this.userRepository.create(dto);
     const role = await this.roleService.getRoleByValue("ADMIN");
-    await user.$set('roles', [role.idRole])
-    user.roles=[role]
+    await user.$set("roles", [role.idRole]);
+    user.roles = [role];
     await user.save();
     return user;
   }
@@ -44,7 +47,7 @@ export class UsersService {
     return user;
   }
 
-  async updateUserNames({ idUser}) { //async updateUserNames({ idUser, firstName, lastName, secondName })
+  async updateUserNames({ idUser }) {
     const user = await this.userRepository.findOne({
       where: {
         idUser,

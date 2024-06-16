@@ -24,8 +24,6 @@ export class TypeService {
     const brand = await this.brandService.getBrandById(dto.idBrand);
     if (type && brand) {
       await type.$add("brands", brand.idBrand);
-      // type.brands=[brand];
-      // await type.save();
       return type;
     }
     throw new HttpException(
